@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template"
+>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <script
+            src="/webjars/bootstrap/5.2.3/js/bootstrap.bundle.js">
+    </script>
+
+    <title>Gestion des Approvisionneents</title>
+</head>
+<body>
+<div class="container">
+
+
+    <div class="card">
+        <h5 class="card-header">Sessions Programmées</h5>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Debut</th>
+                    <th scope="col">Fin</th>
+                    <th scope="col">Heure</th>
+                    <th scope="col">Etat</th>
+                    <th scope="col">Salle</th>
+                    <th scope="col">Professeur</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+                    <td>1</td>
+                    <td>30/04/2023</td>
+                    <td>08H</td>
+                    <td>12H</td>
+                    <td>4H</td>
+                    <td>ENCOURS</td>
+                    <td>OnLine</td>
+                    <td>BAILA WANE</td>
+                    <td><a class="btn btn-success" href="#">Valider</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function(){
+
+    // $('.my-select').selectpicker();
+      // $(function () {
+        // $('select').selectpicker();
+    // });
+
+});
+</script>
+
+</body>
+</html>

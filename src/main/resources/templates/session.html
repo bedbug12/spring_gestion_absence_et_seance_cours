@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <link href="/assets/style.session.css" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<div class="container" layout:fragment="contentForView">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+                <div class="dropdown">
+                    <a class="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle" th:href="@{/ac/session?idP=${idP}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Module</a>
+                    <ul class="dropdown-menu dropdown-menu-end" th:each="cour:${cours}">
+                        <li><a class="dropdown-item" th:href="@{/ac/session/module-id(id=${cour.id},idP=${idP})}" th:text="${cour.module.libelle}"></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="header-title pb-3 mt-0">liste des sessions de cours</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                            <tr class="align-self-center">
+                                <th>DATE</th>
+                                <th>COURS</th>
+                                <th>HEURE DEBUT</th>
+                                <th>HEURE FIN</th>
+                                <th>SALLE</th>
+                                <th>EN LIGNE</th>
+                                <th>ETAT</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="sess:${sessions}">
+                                <td th:text="${sess.date}"></td>
+                                <td th:text="${sess.cours.module.libelle}"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="thumb-sm rounded-circle mr-2"></td>
+                                <td th:text="${sess.heureDebut}"></td>
+                                <td th:text="${sess.heureFin}"></td>
+                                <td >
+                                    <span class="badge badge-boxed badge-soft-warning" th:if="${sess.salle!=null}" th:text="${sess.salle.nom}">en ligne</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-boxed badge-soft-warning" th:if="${sess.enLigne}">en ligne</span>
+                                </td>
+                                <td><span class="badge badge-boxed badge-soft-success" th:text="${sess.etat}"></span></td>
+                                <td>
+                                    <a class="btn btn-success" th:href="@{/ac/session/valider(id=${sess.id},idP=${idP})}" data-bs-toggle="tooltip" data-bs-placement="top" title="Valider">V</a>
+                                    <a class="btn btn-warning" th:href="@{/ac/session/invalider(id=${sess.id},idP=${idP})}" data-bs-toggle="tooltip" data-bs-placement="top" title="Invalider">O</a>
+                                    <a class="btn btn-danger" th:href="@{/ac/session/annuler(id=${sess.id},idP=${idP})}" data-bs-toggle="tooltip" data-bs-placement="top" title="Annuler">X</a>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!--end table-responsive-->
+                    <div class="pt-3 border-top text-right"><a href="#" class="text-primary">View all <i class="mdi mdi-arrow-right"></i></a></div>
+
+                </div>
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item">
+                            <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
